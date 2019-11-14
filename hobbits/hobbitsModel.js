@@ -9,7 +9,8 @@ module.exports = {
 };
 
 async function insert(hobbit) {
-  return null;
+  return db('hobbits').insert(hobbit, '*')
+    .then(([id]) => db('hobbits').where({id})) // sqlite return inserted hobbit
 }
 
 async function update(id, changes) {
